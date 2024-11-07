@@ -1,0 +1,158 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap');
+*
+{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    
+ }
+ body
+ {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background: #e97bd7;
+    box-shadow: inset 20px 6px 30px 20px rgb(224 228 249 / 57%), 
+    inset 0px 20px 20px 20px rgb(194 123 228 / 75%), 
+    20px -3px 7px 20px rgb(149 126 216), 
+    -6px 3px 10px rgb(187 127 220 / 94%)
+ }
+ .clock
+ {
+     position: relative;
+     width: 300px;
+     height: 300px;
+     display: flex;
+     justify-content: center;
+     align-items: center;
+ }
+.clock:before,.clock:after {
+  position: absolute;
+  content: "";
+  top: -30px;
+  left: 0px;
+  width: 240px;
+  height: 350px;
+  background: #e5b5ef;
+  border-radius: 50px;
+  z-index: 10;
+  border-radius: 150px 150px 0 0;
+  transform: rotate(-45deg);
+}
+.clock:before{
+   box-shadow: 30px 30px 30px -10px rgba(224, 210, 210, 0.15),
+   inset 15px 15px 10px rgba(255,255,255,0.75),
+   -15px 15px 35px rgba(255,255,255,0.55),
+   inset -1px -1px 10px rgba(230, 218, 218, 0.2);
+}
+.clock:after {
+   left: 77px;
+   transform: rotate(45deg);
+   box-shadow: inset -1px -20px 0px 0px rgba(224, 210, 210, 0.15), 
+   inset -20px 11px 13px 0px rgba(255, 255, 255, 0.75), 
+   inset -20px -7px 16px 0px rgba(255, 255, 255, 0.75), 
+   inset -20px -18px 9px 0px rgba(255, 255, 255, 0.75);
+}
+/* box-shadow 用于为元素添加阴影效果 */
+ .clock .numbers
+ {
+   position: absolute;
+   inset: 35px;
+   background: linear-gradient(#ea6591,#6cb2ec);
+   border-radius: 50%;
+   z-index: 11;
+   box-shadow:inset -1px 1px 0px 0px rgba(224, 210, 210, 0.15), inset 0px 1px 20px 0px rgb(238 201 236 / 70%), 1px 0px 20px 12px rgba(255, 255, 255, 0.75), inset 0px -2px 20px 13px rgb(254 252 255 / 75%)
+ }
+ .clock .numbers span
+ {
+   position: absolute;
+   inset: 5px;
+   text-align: center;
+   color: #fff;
+   font-size: 1.25em;
+   transform:rotate(calc(90deg * var(--i)));
+
+ }
+/* style="--i:0;" 
+定义了一个自定义属性 --i 
+并将其初始值设置为 0 。
+自定义属性（也称为 CSS 变量）
+可以在整个样式表中被复用，
+通过 var() 函数来引用 */
+ .clock .numbers span b{
+   font-weight: 600;
+   display: inline-block;
+   transform:rotate(calc(-90deg * var(--i)));
+ }
+ /* ::before 是一个伪元素选择器，
+ 用于在匹配的 .clock.numbers 
+ 元素的内容之前插入生成的内容 */
+     /* inset: 35px; 
+ 是一种简写属性，它相当于同时设置了 
+ top: 35px; right: 35px; 
+ bottom: 35px; left: 35px;*/
+ .clock .numbers::before
+ {
+   content:'';
+   position:absolute;
+   inset:35px;
+   background:linear-gradient(#2196f3,#e91e63);
+   border-radius:50%;
+   animation:animate 2s linear infinite;
+ }
+.clock .numbers:after {
+  content: '';
+  position: absolute;
+  inset: 38px;
+  background: #29599d;
+  border-radius: 50%;
+  box-shadow: 0px 0px 0px 0px rgba(224, 210, 210, 0.15),
+    0px 0px 0px 0px rgb(238 201 236 / 70%), 
+    0px 0px 20px 12px rgba(255, 255, 255, 0.75),
+      inset 1px 1px 16px 20px rgb(232 229 251 / 75%);
+}
+ @keyframes animate
+ {
+   0%
+   {
+      transform:rotate(360deg);
+   }
+   100%
+   {
+      transform:rotate(0deg);
+   }
+ }
+ .clock .numbers .circle
+ {
+   position: absolute;
+   inset: 0;
+   border-radius: 50%;
+   display: flex;
+   justify-content: center;
+   z-index: 10;
+ }
+ .clock .numbers .circle i
+ {
+   position: absolute;
+   width: 3px;
+   height: 50%;
+   background: #fff;
+   transform-origin:bottom;
+ }
+ .clock .numbers .circle#hr i
+ {
+   transform:scaleY(0.3);
+   width:4px;
+ }
+ .clock .numbers .circle#mn i
+ {
+   transform: scaleY(0.45);
+ }
+ .clock .numbers .circle#sc i
+ {
+   width: 2px;
+   transform: scaleY(0.55);
+   background: #e91e63;
+   box-shadow: 0 30px 0 #e91e63;
+ }
