@@ -1,0 +1,299 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap');
+*
+{
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+body
+{
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	min-height: 100vh;
+	background: #e97bd7;
+	box-shadow: inset 20px 6px 30px 20px rgb(224 228 249 / 57%), 
+	inset 0px 20px 20px 20px rgb(194 123 228 / 75%), 
+	20px -3px 7px 20px rgb(149 126 216), 
+	-6px 3px 10px rgb(187 127 220 / 94%)
+}
+ .clock
+{
+	position: relative;
+	width: 300px;
+	height: 300px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+.clock:before,.clock:after {
+  position: absolute;
+  content: "";
+  top: -30px;
+  left: 0px;
+  width: 240px;
+  height: 350px;
+  background: #e5b5ef;
+  border-radius: 50px;
+  border-radius: 150px 150px 0 0;
+  transform: rotate(-45deg);
+}
+.clock:before{
+   box-shadow: 30px 30px 30px -10px rgba(224, 210, 210, 0.15),
+   inset 15px 15px 10px rgba(255,255,255,0.75),
+   -15px 15px 35px rgba(255,255,255,0.55),
+   inset -1px -1px 10px rgba(230, 218, 218, 0.2);
+}
+.clock:after {
+   left: 77px;
+   transform: rotate(45deg);
+   box-shadow: inset -1px -20px 0px 0px rgba(224, 210, 210, 0.15), 
+   inset -20px 11px 13px 0px rgba(255, 255, 255, 0.75), 
+   inset -20px -7px 16px 0px rgba(255, 255, 255, 0.75), 
+   inset -20px -18px 9px 0px rgba(255, 255, 255, 0.75);
+}
+/* box-shadow 用于为元素添加阴影效果 */
+ .clock .numbers
+ {
+   position: absolute;
+   inset: 35px;
+   background: linear-gradient(#ea6591,#6cb2ec);
+   border-radius: 50%;
+   z-index: 5;
+   box-shadow:inset -1px 1px 0px 0px rgba(224, 210, 210, 0.15), inset 0px 1px 20px 0px rgb(238 201 236 / 70%), 1px 0px 20px 12px rgba(255, 255, 255, 0.75), inset 0px -2px 20px 13px rgb(254 252 255 / 75%)
+ }
+ .clock .numbers span
+ {
+   position: absolute;
+   inset: 5px;
+   text-align: center;
+   color: #fff;
+   font-size: 1.25em;
+   transform:rotate(calc(30deg * var(--i)));
+
+ }
+/* style="--i:0;" 
+定义了一个自定义属性 --i 
+并将其初始值设置为 0 。
+自定义属性（也称为 CSS 变量）
+可以在整个样式表中被复用，
+通过 var() 函数来引用 */
+ .clock .numbers span b{
+   font-weight: 600;
+   display: inline-block;
+   transform:rotate(calc(-30deg * var(--i)));
+ }
+ /* ::before 是一个伪元素选择器，
+ 用于在匹配的 .clock.numbers 
+ 元素的内容之前插入生成的内容 */
+     /* inset: 35px; 
+ 是一种简写属性，它相当于同时设置了 
+ top: 35px; right: 35px; 
+ bottom: 35px; left: 35px;*/
+ .clock .numbers:before
+ {
+   content:'';
+   position:absolute;
+   inset:45px;
+   width: 160px;
+   height: 160px;
+   z-index: 11;
+   background:linear-gradient(#2196f3,#e91e63);
+   border-radius:50%;
+   border:none;
+   animation:animate 2s linear infinite;
+ }
+.clock .numbers:after {
+  content: '';
+  position: absolute;
+  inset: 62px;
+  background: #29599d;
+  border-radius: 50%;
+  z-index: 11;
+  box-shadow: inset 0px 0px 20px 20px rgba(224, 210, 210, 0.15), 
+  inset 0px 0px 6px 9px rgb(238 201 236 / 70%), 
+  0px 1px 20px 20px rgba(255, 255, 255, 0.75), 
+  inset 0px 0px 14px 20px rgb(232 229 251 / 75%)
+}
+ @keyframes animate
+ {
+   0%
+   {
+      transform:rotate(360deg);
+   }
+   100%
+   {
+      transform:rotate(0deg);
+   }
+ }
+ .clock .numbers .circle
+ {
+   position: absolute;
+   inset: 0;
+   border-radius: 50%;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   z-index: 20;
+   opacity: 0.8;
+}
+
+.numbers 
+{
+	position: relative;
+	width: 250px;
+	height: 250px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+.numbers::before 
+{
+	content: '';
+	position: absolute;
+	width: 5px;
+	height: 5px;
+	border-radius: 50%;
+	z-index: 20;
+	background: #2f363e;
+	border: 1px solid #fff;
+}
+.numbers .circle svg 
+{
+	position: relative;
+	transform: rotate(270deg);
+}
+.numbers .circle:nth-child(1) svg
+{
+	width: 250px;
+	height: 250px;
+}
+.numbers .circle:nth-child(2) svg
+{
+	width: 210px;
+	height: 210px;
+}
+.numbers .circle:nth-child(3) svg
+{
+	width: 170px;
+	height: 170px;
+}
+.numbers .circle svg circle 
+{
+	width: 100%;
+	height: 100%;
+	fill: transparent;
+	stroke: var(--clr);
+	stroke-width: 3;
+	transform: translate(5px,5px);
+	opacity: 0.7;
+}
+.numbers .circle:nth-child(1) svg circle 
+{
+	stroke-dasharray: 772.83;
+	stroke-dashoffset: 772.83;
+}
+.numbers .circle:nth-child(2) svg circle 
+{
+	stroke-dasharray: 508.94;
+	stroke-dashoffset: 508.94;
+}
+.numbers .circle:nth-child(3) svg circle 
+{
+	stroke-dasharray: 408.41;
+	stroke-dashoffset: 408.41;
+}
+.dots 
+{
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	display: flex;
+	justify-content: center;
+	align-items: flex-start;
+	z-index: 10;
+}
+.dots::before 
+{
+	content: '';
+	position: absolute;
+	top: -3px;
+	width: 12px;
+	height: 12px;
+	background: var(--clr);
+	border-radius: 50%;
+    box-shadow: 1px 1px 20px 7px var(--clr),
+	0 0 6px 3px var(--clr), 
+	0px 0px 9px 0px var(--clr), 
+	1px 1px 0px var(--clr);
+}
+.hr_dot::before{
+	position: absolute;
+	top: 60px;
+}
+.min_dot::before{
+	position: absolute;
+	top: 38px;
+}
+.noddles 
+{   position: absolute;
+	inset: 65px;
+	border-radius: 50%;
+	display: flex;
+	justify-content: center;
+	z-index: 60;
+}
+.noddles i 
+{
+   position: absolute;
+   width: 3px;
+   height: 50%;
+   background: #fff;
+   transform-origin:bottom;
+}
+.noddles3#hr i
+ {
+   transform:scaleY(0.7);
+   background: #066af7;
+   width:4px;
+ }
+ .noddles2#mn i
+ {
+   transform: scaleY(0.8);
+   background: #cc40ec;
+   box-shadow: 0 17px 0 #cc40ec;
+ }
+.noddles#sc i
+ {
+   width: 2px;
+   transform: scaleY(0.9);
+   background: #e91e63;
+   box-shadow: 0 15px 0 #e91e63;
+ }
+.numbers span 
+{
+	position: absolute;
+	inset: 55px;
+	text-align: center;
+	color: #999;
+	transform: rotate(calc(30deg * var(--i)));
+}
+.numbers span b 
+{
+	font-family: consolas;
+	font-size: 0.75em;
+	font-weight: 500;
+	display: inline-block;
+	transform: rotate(calc(-30deg * var(--i)));
+}
+.coc{
+	width: 8px;
+	height: 8px;
+	border-radius: 50%;
+	background: #fff;
+	z-index: 80;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
